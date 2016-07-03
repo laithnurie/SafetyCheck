@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1002648200552",
+    "firebase_url": "https://safetycheck-cf35e.firebaseio.com",
+    "project_id": "safetycheck-cf35e",
+    "storage_bucket": "safetycheck-cf35e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1002648200552:android:8851cea70eaff222",
+        "android_client_info": {
+          "package_name": "com.laithlab.safetycheck"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1002648200552-142p2ub7hlk5qfaft3q8709s4aja8b5c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.laithlab.safetycheck",
+            "certificate_hash": "1AE1C01285C142752AAFA6A59A8DA713E5E206B7"
+          }
+        },
+        {
+          "client_id": "1002648200552-ds92cgj4g32dkg5ctptpjgr35geiu4cj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgMtf9ov6s59JI74GtOWQJRiutCj327ow"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1002648200552-ds92cgj4g32dkg5ctptpjgr35geiu4cj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
