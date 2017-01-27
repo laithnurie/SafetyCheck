@@ -14,25 +14,30 @@
         android:layout_marginRight="20dp">
 
         <LinearLayout
-            android:padding="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="20dp">
 
             <EditText
+                android:id="@+id/et_email_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/email" />
+                android:hint="@string/email"
+                android:inputType="textEmailAddress" />
 
             <EditText
+                android:id="@+id/et_password_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/password" />
+                android:hint="@string/password"
+                android:inputType="textPassword" />
 
             <Button
+                android:id="@+id/btn_sign_in"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Sign IN" />
+                android:text="@string/sign_in" />
 
         </LinearLayout>
 
