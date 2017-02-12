@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1002648200552-asi8uaadal2s7b5dvokfau4jkn39i4ad.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.laithlab.safetycheck",
+            "certificate_hash": "5B516AF2ED2A880617EC551F09D6E03903FC93BE"
+          }
+        },
+        {
           "client_id": "1002648200552-142p2ub7hlk5qfaft3q8709s4aja8b5c.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

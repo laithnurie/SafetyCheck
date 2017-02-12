@@ -1,5 +1,10 @@
 package com.laithlab.safetycheck;
 
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.maps.*;
+import com.google.android.gms.maps.model.LatLng;
+
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -8,53 +13,29 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Toast;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.LatLng;
-import com.laithlab.safetycheck.db.SCDataBase;
-
-import static android.Manifest.permission.ACCESS_FINE_LOCATION;
-
-public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
-
-    private static String PARAM_USER_NAME = "user_name";
+public class MapActivity extends Activity implements OnMapReadyCallback {
 
     private static final int REQUEST_ACCESS_FINE_LOCATION = 1;
     private GoogleMap map;
-    private LocationManager lm;
-    private SCDataBase scDataBase;
+    LocationManager lm;
+    LocationListener ll;
+    Location l;
 
-    public static Intent getIntent(Context context, String userName) {
-        Intent intent = new Intent(context, MainActivity.class);
-        intent.putExtra(PARAM_USER_NAME, userName);
-        return intent;
+    public static Intent getIntent(Context context) {
+        return new Intent(context, MapActivity.class);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        scDataBase = new SCDataBase();
+        setContentView(R.layout.map_activity);
 
-        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
+        MapFragment mapFragment = (MapFragment) getFragmentManager()
+                .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
         lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-
-        Toast.makeText(this, getIntent().getStringExtra(PARAM_USER_NAME), Toast.LENGTH_SHORT).show();
-        View startTracking = findViewById(R.id.btn_start_tracking);
-        startTracking.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(MapActivity.getIntent(MainActivity.this));
-            }
-        });
     }
 
     @Override
@@ -94,12 +75,13 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
         map.setMyLocationEnabled(true);
 
-        if (ContextCompat.checkSelfPermission(this, ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, new android.location.LocationListener() {
                 @Override
                 public void onLocationChanged(Location location) {
-                    LatLng pos = new LatLng(location.getLatitude(), location.getLongitude());
-                    map.moveCamera(CameraUpdateFactory.newLatLngZoom(pos, 14f));
+                    l = location;
+                    LatLng pos = new LatLng(l.getLatitude(), l.getLongitude());
+                    map.moveCamera(CameraUpdateFactory.newLatLngZoom(pos, 14f ));
                 }
 
                 @Override
@@ -122,5 +104,4 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         // Add a marker in Sydney and move the camera
         map.setMyLocationEnabled(true);
     }
-
 }

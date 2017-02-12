@@ -3,4 +3,6 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="sign_in">Sign IN</string>
+    <string name="start_tracking">Start Tracking</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
